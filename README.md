@@ -34,7 +34,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 │  │   • 8 GB RAM                         │                │
 │  │   • 4 CPU cores                      │                │
 │  │   • C:\ 100 GB (System)              │                │
-│  │   • D:\ 200 GB (Backup Repository)   │                │
+│  │   • R:\ 200 GB (Backup Repository)   │                │
 │  │                                      │                │
 │  │   Services:                          │                │
 │  │   • Veeam Backup Service            │                │
@@ -67,7 +67,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 
 Every backup infrastructure starts with a dedicated backup server. I deployed **Windows Server 2022** as the foundation.
 - **Static IP (192.168.10.10):** Backup servers need consistent addresses
-- **Dual disks:** Separate system (C:) and repository (D:) drives
+- **Dual disks:** Separate system (C:) and repository (R:) drives
 - **200GB repository:** Sized for 14 days of incremental backups
 - **Domain-joined:** Not required for this lab, but production-ready architecture
 
