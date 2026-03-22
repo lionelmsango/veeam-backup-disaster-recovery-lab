@@ -22,7 +22,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│              Lab Network (Mixed Subnets)                 │
+│              Lab Network                  │
 ├──────────────────────────────────────────────────────────┤
 │                                                           │
 │  ┌──────────────────────────────────────┐                │
@@ -51,7 +51,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 │  │ Windows 11 │                │   Ubuntu   │           │
 │  │     VM     │                │     VM     │           │
 │  │            │                │            │           │
-│  │ .10.20     │                │ .229.128   │           │
+│  │ .10.20     │                │ .10.30   │           │
 │  └────────────┘                └────────────┘           │
 │                                                           │
 │  Protected VMs: 2                                        │
