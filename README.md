@@ -71,6 +71,6 @@ Every backup infrastructure starts with a dedicated backup server. I deployed **
 - **200GB repository:** Sized for 14 days of incremental backups
 - **Domain-joined:** Not required for this lab, but production-ready architecture
 
-I chose to use a **dedicated repository drive** (D:\) rather than storing backups on the system drive. In production, backup repositories should never share disk I/O with the operating system - this prevents backup jobs from impacting server performance and vice versa.
+I chose to use a **dedicated repository drive** (R:\) rather than storing backups on the system drive. In production, backup repositories should never share disk I/O with the operating system - this prevents backup jobs from impacting server performance and vice versa.
 
 (project to be continued)
