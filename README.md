@@ -1,76 +1,95 @@
-# Veeam Backup & Replication Lab - Building Enterprise Backup Infrastructure
+# Veeam Backup & Replication Lab - Implementation Journey
+
+> *Enterprise backup infrastructure deployment using Veeam Community Edition - A learning experience in backup architecture and troubleshooting*
 
 ---
+
+## 📋 Project Overview
+
+**Objective:** Implement Veeam Backup & Replication infrastructure to protect Windows and Linux VMs with automated backup jobs and disaster recovery capabilities.
+
+**Environment:** VMware Workstation  
+**Edition:** Veeam Backup & Replication 13.0.1 Community Edition (Free)  
+**Current Status:** Infrastructure deployed, backup jobs configured, troubleshooting backup execution issues
 
 ## What I Built (So Far)
 
 This lab demonstrates the foundation of a complete backup infrastructure:
 
-- ✅ Windows Server 2022 backup server deployment
-- ✅ Veeam Backup & Replication 13 installation and configuration  
-- ✅ 200GB dedicated backup repository setup
-- ✅ Two automated backup jobs created (Windows 11 and Ubuntu VMs)
-- ⚠️ Backup execution troubleshooting (in progress)
+### ✅ Successfully Completed
 
-**Current Status:** Infrastructure operational, backup jobs configured, troubleshooting initial backup failures.
+- **Infrastructure Planning:** Designed network architecture with dedicated backup server
+- **Storage Configuration:** Created dedicated 199 GB backup repository partition
+- **Veeam Installation:** Full installation of Veeam Backup & Replication 13
+- **Database Setup:** PostgreSQL database backend configured
+- **Repository Creation:** Backup storage location configured and verified
+- **Backup Jobs:** Two automated backup jobs created (Windows 11, Ubuntu)
+- **Agent Deployment:** Veeam agents deployed to target VMs
+- **Job Scheduling:** Daily backup schedules configured
 
-**Current Status:** Infrastructure operational, backup jobs configured, troubleshooting initial backup failures.
+### ⚠️ Currently Troubleshooting
 
 ---
 
 ## The Architecture
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│              Lab Network                  │
-├──────────────────────────────────────────────────────────┤
-│                                                           │
-│  ┌──────────────────────────────────────┐                │
-│  │   Veeam Backup Server                │                │
-│  │   Windows Server 2022                │                │
-│  │   IP: 192.168.10.10                  │                │
-│  │                                      │                │
-│  │   Specs:                             │                │
-│  │   • 8 GB RAM                         │                │
-│  │   • 4 CPU cores                      │                │
-│  │   • C:\ 100 GB (System)              │                │
-│  │   • R:\ 200 GB (Backup Repository)   │                │
-│  │                                      │                │
-│  │   Services:                          │                │
-│  │   • Veeam Backup Service            │                │
-│  │   • PostgreSQL Database             │                │
-│  │   • Backup Repository               │                │
-│  └──────────────┬───────────────────────┘                │
-│                 │                                         │
-│                 │ Agent-Based Backups                     │
-│                 │                                         │
-│    ┌────────────┴────────────────────┐                   │
-│    │                                 │                   │
-│    ▼                                 ▼                   │
-│  ┌────────────┐                ┌────────────┐           │
-│  │ Windows 11 │                │   Ubuntu   │           │
-│  │     VM     │                │     VM     │           │
-│  │            │                │            │           │
-│  │ .10.20     │                │ .10.30   │           │
-│  └────────────┘                └────────────┘           │
-│                                                           │
-│  Protected VMs: 2                                        │
-│  Backup Jobs: 2                                          │
-│                                                           │
-└──────────────────────────────────────────────────────────┘
-
+┌──────────────────────────────────────────────────────┐
+│      Virtual Network (192.168.10.0/24)               │
+├──────────────────────────────────────────────────────┤
+│                                                       │
+│  ┌─────────────────────────────────────┐             │
+│  │   Veeam Backup Server               │             │
+│  │   Windows Server 2022               │             │
+│  │   IP: 192.168.10.10                 │             │
+│  │                                     │             │
+│  │   Components:                       │             │
+│  │   ✓ Veeam Backup & Replication 13   │             │
+│  │   ✓ PostgreSQL 13 Database          │             │
+│  │   ✓ Backup Repository (R:\)         │             │
+│  │   ✓ Capacity: 199 GB                │             │
+│  └──────────┬──────────────────────────┘             │
+│             │                                         │
+│             │ Agent-Based Backups                     │
+│             │                                         │
+│     ┌───────┴─────────┬──────────────┐               │
+│     │                 │              │               │
+│     ▼                 ▼              ▼               │
+│  ┌──────┐         ┌──────┐      ┌──────┐            │
+│  │Win11 │         │Ubuntu│      │Future│            │
+│  │.10.20│         │.10.30│      │ VMs  │            │
+│  └──────┘         └──────┘      └──────┘            │
+│                                                       │
+└──────────────────────────────────────────────────────┘
 ```
 
-## Phase 1: Building the Foundation
+### Phase 1: Storage Preparation
 
-### The Backup Server
+**Repository Disk Partition Created**
 
-Every backup infrastructure starts with a dedicated backup server. I deployed **Windows Server 2022** as the foundation.
-- **Static IP (192.168.10.10):** Backup servers need consistent addresses
-- **Dual disks:** Separate system (C:) and repository (R:) drives
-- **200GB repository:** Sized for 14 days of incremental backups
-- **Domain-joined:** Not required for this lab, but production-ready architecture
+![Repository Disk](https://github.com/lionelmsango/veeam-backup-disaster-recovery-lab/blob/addcbf92b0385f7b4faacb6f94affd772abad069/screenshots/1__repository_disk_partition_created.jpg.jpg)
+*Created dedicated 199 GB partition (R:) for Veeam backup repository - separate from OS disk for better I/O performance and storage management.*
 
-I chose to use a **dedicated repository drive** (R:\) rather than storing backups on the system drive. In production, backup repositories should never share disk I/O with the operating system - this prevents backup jobs from impacting server performance and vice versa.
+---
 
-(project to be continued)
+### Phase 2: Veeam Installation
+
+**Installation Splash Screen**
+
+![Veeam Installation](https://github.com/lionelmsango/veeam-backup-disaster-recovery-lab/blob/addcbf92b0385f7b4faacb6f94affd772abad069/screenshots/2_veeam_installation_splash_png.jpg.jpg)
+*Veeam Backup & Replication 13 installation initiated from mounted ISO.*
+
+
+**License Agreement**
+
+![License Agreement](https://github.com/lionelmsango/veeam-backup-disaster-recovery-lab/blob/addcbf92b0385f7b4faacb6f94affd772abad069/screenshots/3_License_Agreement.jpg_.jpg)
+*Accepting Veeam end-user license agreement and third-party component licenses.*
+
+**Installation Progress**
+
+![Installation Progress](https://github.com/lionelmsango/veeam-backup-disaster-recovery-lab/blob/addcbf92b0385f7b4faacb6f94affd772abad069/screenshots/4_installation_progress_png.jpg.jpg)
+*Installing PostgreSQL server 17.9-1 as database backend for Veeam configuration and metadata storage.*
+
+---
+
+
