@@ -8,9 +8,6 @@
 
 **Objective:** Implement Veeam Backup & Replication infrastructure to protect Windows and Linux VMs with automated backup jobs and disaster recovery capabilities.
 
-**Environment:** VMware Workstation  
-**Edition:** Veeam Backup & Replication 13.0.1 Community Edition (Free)  
-**Current Status:** Infrastructure deployed, backup jobs configured, troubleshooting backup execution issues
 
 ## What I Built (So Far)
 
@@ -26,7 +23,6 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 - **Backup Jobs:** Two automated backup jobs created (Windows 11, Ubuntu)
 - **Agent Deployment:** Veeam agents deployed to target VMs
 - **Job Scheduling:** Daily backup schedules configured
-### ⚠️ Currently Troubleshooting
 
 ---
 
