@@ -113,7 +113,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 
 **Repository Creation Wizard**
 
-![Add Backup Repository](screenshots/6__Add_Backup_Repository_Wizard.jpg)
+![Add Backup Repository](https://github.com/lionelmsango/veeam-backup-disaster-recovery-lab/blob/45cea248b8023379a7b9287dbbf91c5111a93395/screenshots/6__Add_Backup_Repository_Wizard.jpg.jpg)
 *Creating backup repository "VeeamRepository01" on local storage. This repository will store all backup files (.vbk) and metadata. Description: "Local backup storage for lab VMs"*
 
 
