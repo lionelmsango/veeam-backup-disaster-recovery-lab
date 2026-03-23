@@ -59,7 +59,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 ```
 
 
-### Phase 1: Storage Preparation
+### Stage 1: Storage Preparation
 
 **Repository Disk Partition Created**
 
@@ -69,7 +69,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 ---
 
 
-### Phase 2: Veeam Installation
+### Stage 2: Veeam Installation
 
 **Installation Splash Screen**
 
@@ -92,7 +92,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 
 ---
 
-### Phase 3: Console First Launch
+### Stage 3: Console First Launch
 
 **Veeam Console - Community Edition**
 
@@ -109,7 +109,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 ---
 
 
-### Phase 4: Backup Repository Configuration
+### Stage 4: Backup Repository Configuration
 
 **Repository Creation Wizard**
 
@@ -127,7 +127,7 @@ This lab demonstrates the foundation of a complete backup infrastructure:
 ---
 
 
-### Phase 5: Backup Job Configuration
+### Stage 5: Backup Job Configuration
 
 **Job Summary - Windows 11 Backup**
 
@@ -155,7 +155,7 @@ This configuration enables complete system recovery with file-level restore capa
 
 ---
 
-### Phase 6: Backup Execution
+### Stage 6: Backup Execution
 
 **Active Backup Jobs Running**
 
