@@ -1,8 +1,10 @@
 # Veeam Backup & Replication Lab - Implementation Journey
 
-> *Enterprise backup infrastructure deployment using Veeam Community Edition - A learning experience in backup architecture and troubleshooting*
-
 ---
+
+## 📋 Kurzbeschreibung
+
+Dieses Projekt dokumentiert den Aufbau einer Backup-Infrastruktur mit Veeam Backup & Replication 13 auf Windows Server 2022. Ich habe ein dediziertes Backup-Repository (199 GB), eine PostgreSQL-Datenbankanbindung sowie zwei agentenbasierte Backup-Jobs für Windows-11- und Ubuntu-Endpunkte konfiguriert. Das Projekt dokumentiert zusätzlich den vollständigen Troubleshooting-Prozess bei einem Backup-Ausführungsfehler — ein praxisnaher Einblick in die systematische Fehlerdiagnose in produktionsähnlichen Umgebungen.
 
 ## 📋 Project Overview
 
